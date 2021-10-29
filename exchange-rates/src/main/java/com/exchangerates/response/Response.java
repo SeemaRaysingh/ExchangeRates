@@ -4,8 +4,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 public class Response {
 
-	String statusCode;
-	JsonNode response;
+	private String statusCode;
+	private JsonNode response;
 	
 	public Response(String statusCode, JsonNode response) {
 		super();
@@ -28,7 +28,5 @@ public class Response {
 	public void setResponse(JsonNode response) {
 		this.response = response;
 	}
-	
-	
 	
 }

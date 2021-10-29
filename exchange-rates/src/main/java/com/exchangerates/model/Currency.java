@@ -86,6 +86,19 @@ public class Currency {
 	}
 
 
+	public boolean equals(Object object){
+		
+		Currency currency = (Currency) object;
+		
+		if(this.currName.equals(currency.getCurrName()) &&
+				this.rate == currency.getRate() && this.date.equals(currency.getDate())
+				&& this.baseCurr.equals(currency.getBaseCurr())){
+			
+			return true;
+		}
+		
+		else return false;
+	}
 	@Override
 	public String toString() {
 		return "Currency [id=" + id + ", currName=" + currName + ", rate="

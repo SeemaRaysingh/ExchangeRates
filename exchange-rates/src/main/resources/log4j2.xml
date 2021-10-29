@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="debug">
+
+	<Appenders>
+   <RollingRandomAccessFile name="FileAppender"
+			fileName="logs/application.log" immediateFlush="false" append="true"
+			filePattern="logs/application-%d{dd-MM-yyyy}-%i.log.gz">
+			<PatternLayout
+				pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%throwable%n" />
+			<Policies>
+				<SizeBasedTriggeringPolicy size="100 MB" />
+			</Policies>
+			 <DefaultRolloverStrategy max = "20">
+                <Delete basePath="logs" maxDepth="1">
+                    <IfFileName glob="application*.log.gz" />
+                    <IfLastModified age="7d" />
+                </Delete>
+            </DefaultRolloverStrategy>
+		</RollingRandomAccessFile>
+	</Appenders>
+	<Loggers>
+		<AsyncLogger name="com.exchangerates" level="debug"
+			includeLocation="true" additivity="false">
+			<AppenderRef ref="FileAppender" />
+		</AsyncLogger>
+		
+	</Loggers>
+</Configuration>

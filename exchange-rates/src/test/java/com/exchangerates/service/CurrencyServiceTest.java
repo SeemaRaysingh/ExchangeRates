@@ -1,4 +1,4 @@
-package com.exchangerates;
+package com.exchangerates.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,12 +33,10 @@ public class CurrencyServiceTest {
 	private CurrencyServiceImpl currencyServiceImpl;
 	
 	@Test
-	void testGetForObject() throws JsonMappingException, JsonProcessingException{
+	void testloadData() throws JsonMappingException, JsonProcessingException{
 		
-		List<String> list = new ArrayList();
+		List<String> list = new ArrayList<String>();
 		list.add("XAU");
-		
-//		String json = "{ \"XAU\" : \"v1\" } ";
 		
 		String json = "[{\"success\":\"true\",\"timestamp\":\"564687465\",\"historical\":\"true\",\"base\":\"EUR\",\"date\":\"2021-10-01\",\"rates\":{\"GBP\":0.853913}}]";
 		
@@ -56,10 +54,5 @@ public class CurrencyServiceTest {
 		
 	}
 	
-	@Test
-	void testStoreData(){
-		
-		
-		
-	}
+	
 }

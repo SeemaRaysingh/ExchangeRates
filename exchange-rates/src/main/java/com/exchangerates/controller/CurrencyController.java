@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.exchangerates.constants.Constants;
 import com.exchangerates.response.Response;
 import com.exchangerates.services.CurrencyServiceImpl;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
@@ -41,8 +42,6 @@ public class CurrencyController {
 				objectNode.put("message", "Data Loaded");
 				return new ResponseEntity<>(new Response(Constants.SUCCESS,objectNode), HttpStatus.OK);
 			}
-				
-				
 			else {
 				objectNode.put("message", "Data Not Loaded");
 				return new ResponseEntity<>(new Response(Constants.FAILURE,objectNode), HttpStatus.OK);
@@ -62,11 +61,10 @@ public class CurrencyController {
 			objectNode.put("message", "Data Loaded");
 			return new ResponseEntity<>(new Response(Constants.SUCCESS,objectNode), HttpStatus.OK);
 	}
-		
 	else {
 		objectNode.put("message", "Data Not Loaded");
 		return new ResponseEntity<>(new Response(Constants.FAILURE,objectNode), HttpStatus.OK);
-	}
+		}
 	
 	}
 	
@@ -123,7 +121,7 @@ public class CurrencyController {
 	@RequestMapping(value="/getRates", method=RequestMethod.GET)
 	public ResponseEntity<Response> getRatesForDateRange(@RequestParam String date){
 		
-		 ObjectNode objectNode = currencyServiceImpl.fetchRate(date);
+		 JsonNode objectNode = currencyServiceImpl.fetchRate(date);
 		 
 		return new ResponseEntity<>(new Response(Constants.SUCCESS, objectNode),HttpStatus.OK);
 			 

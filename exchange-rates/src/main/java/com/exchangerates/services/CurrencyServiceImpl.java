@@ -3,11 +3,12 @@ package com.exchangerates.services;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.temporal.TemporalAdjusters;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import com.exchangerates.dao.CurrencyRepo;
 import com.exchangerates.model.Currency;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 @Service
@@ -35,6 +37,9 @@ public class CurrencyServiceImpl implements CurrencyService{
 	@Value("${exchange.rates.api.access_key}")
 	private String accessKey;
 	
+	private static final Logger LOGGER = LoggerFactory.getLogger(CurrencyServiceImpl.class);
+
+	
 	
 	@Override //for date and list of currencies
 	public boolean loadData(String date, List<String> currencies) {
@@ -43,7 +48,7 @@ public class CurrencyServiceImpl implements CurrencyService{
 		
 		JsonNode responseNode = restTemplate.getForObject(url + date + "?access_key=" + accessKey + "&symbols="+currencyList, JsonNode.class);
 	
-		System.out.println(url + date + "?access_key=" + accessKey + "&symbols="+currencyList);
+		LOGGER.debug(url + date + "?access_key=" + accessKey + "&symbols="+currencyList);
 		
 		return storeData(date,responseNode);
 		
@@ -69,20 +74,21 @@ public class CurrencyServiceImpl implements CurrencyService{
 		
 		LocalDate firstDayOfMonth = docDate.with(TemporalAdjusters.firstDayOfMonth());
 		
-		System.out.println(firstDayOfMonth);
-		
 		try{
-		while(firstDayOfMonth.isAfter(lastYearDate)){
 			
+			while(firstDayOfMonth.isAfter(lastYearDate)) {
 			
 			JsonNode responseNode = restTemplate.getForObject(url + firstDayOfMonth.toString() + "?access_key=" + accessKey + "&symbols="+currency, JsonNode.class);
 			
-			System.out.println(url + firstDayOfMonth.toString() + "?access_key=" + accessKey + "&symbols="+currency);
-			storeData(firstDayOfMonth.toString(),responseNode);
+			boolean isDataStored = storeData(firstDayOfMonth.toString(),responseNode);
+			
+			if(!isDataStored){
+				
+				LOGGER.debug("data not stored for " + currency);
+			}
 			
 			firstDayOfMonth = firstDayOfMonth.minusMonths(1);
 			
-			System.out.println("---" + firstDayOfMonth);
 	}
 		}
 		
@@ -121,10 +127,10 @@ public class CurrencyServiceImpl implements CurrencyService{
 				 currency.setDate(date);
 				 currency.setBaseCurr(baseCurr);
 					
-				Currency result = repo.save(currency);
+				 repo.save(currency);
 				 }
 				 catch(ClassCastException e){
-					 System.out.println(e.getMessage());
+					 LOGGER.debug(e.getMessage());
 					
 				 }
 			 }
@@ -156,28 +162,32 @@ public class CurrencyServiceImpl implements CurrencyService{
 	
 		
 	@SuppressWarnings("deprecation")
-	public ObjectNode fetchRate(String date){
+	public JsonNode fetchRate(String date){
 		
 		SimpleDateFormat simpleDate = new SimpleDateFormat("YYYY-MM-dd");
 		
 		String today = simpleDate.format(new Date());
 		
-		System.out.println(today);
+		LOGGER.debug(today);
 		
 		List<Currency> currencyList = repo.findByDateBetween(date, today);
 		
-		ObjectNode outerNode = new ObjectMapper().createObjectNode();
+		LOGGER.debug("fetchRate : " + currencyList);
+		
+		ArrayNode outerNode = new ObjectMapper().createArrayNode();
 		
 
 		for (Currency currency : currencyList) {
 			
 			ObjectNode innerNode = new ObjectMapper().createObjectNode();
 			
+			innerNode.put("currency", currency.getCurrName());
 			innerNode.put("rate", currency.getRate());
 			innerNode.put("base", currency.getBaseCurr());
 			innerNode.put("date", currency.getDate());
 			
-			outerNode.put(currency.getCurrName(), innerNode);
+//			outerNode.put(currency.getCurrName(), innerNode);
+			outerNode.add(innerNode);
 		}
 		
 		return outerNode;

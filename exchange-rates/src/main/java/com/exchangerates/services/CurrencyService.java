@@ -3,6 +3,7 @@ package com.exchangerates.services;
 import java.util.List;
 
 import com.exchangerates.model.Currency;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public interface CurrencyService {
@@ -15,5 +16,5 @@ public interface CurrencyService {
 	
 	public double fetchRate(String date, String curr);
 	
-	public ObjectNode fetchRate(String date);
+	public JsonNode fetchRate(String date);
 }
