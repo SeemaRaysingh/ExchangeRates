@@ -76,8 +76,6 @@ public class CurrencyServiceTest {
 		 
 		Mockito.when(currencyRepo.save(Mockito.any(Currency.class))).thenReturn(currency);
 		
-		System.out.println(currencyService);
-		
 		currencyService.loadData("2020-11-11", list);
 		
 		Mockito.verify(currencyRepo, Mockito.atLeastOnce()).save(Mockito.any());

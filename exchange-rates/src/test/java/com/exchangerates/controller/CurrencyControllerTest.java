@@ -8,17 +8,14 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.exchangerates.dao.CurrencyRepo;
 import com.exchangerates.entity.Currency;
-import com.exchangerates.response.ApiResponse;
 import com.exchangerates.services.CurrencyService;
 
 @RunWith(SpringRunner.class)
@@ -99,8 +96,6 @@ public class CurrencyControllerTest {
 	@org.junit.Test
 	public void canNotGetRateByDateAndCurrency() throws Exception{
 
-		Currency currency = new Currency("XAU", 0.853913, "2020-11-11", "EUR");
-		
 		Mockito.when(currencyRepo.findByCurrencyAndDocDate(Mockito.anyString(), Mockito.anyString())).thenReturn(null);
 		
 		

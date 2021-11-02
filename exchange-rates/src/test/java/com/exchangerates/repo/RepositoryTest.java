@@ -52,16 +52,6 @@ public class RepositoryTest {
 
 	}
 	
-	
-	@Test(expected=NullPointerException.class)
-	public void testNullInput() {
-
-		Currency actual = currencyRepo.findByCurrencyAndDocDate("XAU", "2021-02-02");
-
-		fail(actual.toString());
-	}
-	
-	
 	@Test
 	public void testFindByDateBetween(){
 		

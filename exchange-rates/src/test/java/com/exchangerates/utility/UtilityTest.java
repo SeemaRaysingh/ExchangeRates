@@ -1,16 +1,17 @@
 package com.exchangerates.utility;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import java.time.LocalDate;
 import java.util.Optional;
 
 import org.junit.Test;
-import org.junit.jupiter.api.Disabled;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.exchangerates.constants.Constants;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 public class UtilityTest{
@@ -34,7 +35,6 @@ public class UtilityTest{
 		String userDate = "2021/02/02";
 		
 		Optional<LocalDate> validate = Optional.ofNullable(Utility.validateDateFormat(userDate));
-			
 		
 		assertFalse(validate.isPresent());
 		
@@ -48,13 +48,8 @@ public class UtilityTest{
 		
 		String resultData =  Utility.validateDate(userDate);
 			
-		System.out.println(resultData);
-		
 		assertEquals(Constants.OUT_OF_RANGE, resultData);
 		
 	}
-	
-	
-
 	
 }
