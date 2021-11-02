@@ -3,13 +3,15 @@ package com.exchangerates.dao;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-import com.exchangerates.model.Currency;
+import com.exchangerates.entity.Currency;
 
+@Repository
 public interface CurrencyRepo extends JpaRepository<Currency, String> {
 
-	public Currency findByCurrNameAndDate(String currName, String date);
+	public Currency findByCurrencyAndDocDate(String currName, String date);
 	
-	public List<Currency> findByDateBetween(String startDate, String endDate);
+	public List<Currency> findByDocDateBetween(String startDate, String endDate);
+	
 }

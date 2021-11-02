@@ -1,9 +1,7 @@
 package com.exchangerates.services;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.temporal.TemporalAdjusters;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -15,11 +13,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.exchangerates.dao.CurrencyRepo;
-import com.exchangerates.model.Currency;
+import com.exchangerates.entity.Currency;
+import com.exchangerates.exceptionhandler.ExchangeRateNotFoundException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 
 @Service
 public class CurrencyServiceImpl implements CurrencyService{
@@ -40,9 +37,22 @@ public class CurrencyServiceImpl implements CurrencyService{
 	private static final Logger LOGGER = LoggerFactory.getLogger(CurrencyServiceImpl.class);
 
 	
+	public CurrencyServiceImpl() {
+		super();
+	}
 	
+	public CurrencyServiceImpl(CurrencyRepo repo) {
+		this.repo = repo;
+	}
+
+	public CurrencyServiceImpl(RestTemplate restTemplate, CurrencyRepo repo) {
+		this.restTemplate = restTemplate;
+		this.repo = repo;
+	}
+
 	@Override //for date and list of currencies
-	public boolean loadData(String date, List<String> currencies) {
+	public void loadData(String date, List<String> currencies) {
+		
 		
 		String currencyList = String.join(",", currencies);
 		
@@ -50,23 +60,35 @@ public class CurrencyServiceImpl implements CurrencyService{
 	
 		LOGGER.debug(url + date + "?access_key=" + accessKey + "&symbols="+currencyList);
 		
-		return storeData(date,responseNode);
+		LOGGER.debug("Response : " +responseNode);
+		
+		if(!responseNode.has("success")){
+			
+			throw new ExchangeRateNotFoundException("Data Not Loaded for " + currencies );
+			
+		}
+		
+		 storeData(date,responseNode);
 		
 	}
 	
 	@Override // for particular date currency base
-	public boolean loadData(String date, String currency,String baseCurrency) {
+	public void loadData(String date, String currency,String baseCurrency) {
 		
-		JsonNode responseNode = restTemplate.getForObject(url + date + "?access_key=" + accessKey + "&symbols="+currency, JsonNode.class);
+		JsonNode responseNode = restTemplate.getForObject(url + date + "?access_key=" + accessKey + "&base="+baseCurrency+ "&symbols="+currency, JsonNode.class);
 		
-		return storeData(date,responseNode);
-		
+		LOGGER.debug(url + date + "?access_key=" + accessKey + "&base=" + baseCurrency + "&symbols=" +currency);
+
+		if(!responseNode.has("success")){
+			
+			throw new ExchangeRateNotFoundException("Data Not Loaded for " + currency );
+			
+		}
+		 storeData(date,responseNode);
 	}
 
 	@Override  //whole year
-	public boolean loadData(String currency) {
-		
-		boolean isSuccess = true;
+	public void loadData(String currency) {
 		
 		LocalDate docDate = LocalDate.now();
 		
@@ -74,40 +96,28 @@ public class CurrencyServiceImpl implements CurrencyService{
 		
 		LocalDate firstDayOfMonth = docDate.with(TemporalAdjusters.firstDayOfMonth());
 		
-		try{
-			
-			while(firstDayOfMonth.isAfter(lastYearDate)) {
-			
-			JsonNode responseNode = restTemplate.getForObject(url + firstDayOfMonth.toString() + "?access_key=" + accessKey + "&symbols="+currency, JsonNode.class);
-			
-			boolean isDataStored = storeData(firstDayOfMonth.toString(),responseNode);
-			
-			if(!isDataStored){
+		while(firstDayOfMonth.isAfter(lastYearDate)) {
+		
+		JsonNode responseNode = restTemplate.getForObject(url + firstDayOfMonth.toString() + "?access_key=" + accessKey + "&symbols="+currency, JsonNode.class);
+		
+		LOGGER.debug(url + firstDayOfMonth.toString() + "?access_key=" + accessKey + "&symbols="+currency);
+		
+		if(!responseNode.has("success")){
 				
-				LOGGER.debug("data not stored for " + currency);
-			}
-			
-			firstDayOfMonth = firstDayOfMonth.minusMonths(1);
-			
-	}
+				throw new ExchangeRateNotFoundException("Data Not Loaded for " + currency );
+				
 		}
+		storeData(firstDayOfMonth.toString(),responseNode);
 		
-		catch(Exception e){
-			
-			isSuccess = false;
+		firstDayOfMonth = firstDayOfMonth.minusMonths(1);
+		
 		}
-		
-		return isSuccess;
 	}
 	
-	
-	
-	public boolean storeData(String date,JsonNode responseNode){
+	public void storeData(String date,JsonNode responseNode){
 		
-		boolean isSuccess = true;
-		
-		if(responseNode.has("success") && responseNode.get("success").asBoolean()==true){
-			
+		 try{
+			 
 			String baseCurr = responseNode.get("base").asText();
 				
 			 JsonNode rateNode = responseNode.get("rates");
@@ -116,82 +126,38 @@ public class CurrencyServiceImpl implements CurrencyService{
 				
 			 Map<String,Double> convertValue = mapper.convertValue(rateNode, Map.class);
 			 
-			 try{
+				 
 			 for(Map.Entry<String, Double> entry : convertValue.entrySet()){
 				 
-				 try{
-				 
+				 Currency currencyObj = repo.findByCurrencyAndDocDate(entry.getKey(), date);
+				 if(currencyObj != null) {
+					  //assuming rate will not change for particular date
+					
+					 continue;
+				 }
 				 Currency currency = new Currency();
-				 currency.setCurrName(entry.getKey());
+				 
+				 currency.setCurrency(entry.getKey());
 				 currency.setRate(entry.getValue());
-				 currency.setDate(date);
-				 currency.setBaseCurr(baseCurr);
-					
+				 currency.setDocDate(date);
+				 currency.setBase(baseCurr);
 				 repo.save(currency);
-				 }
-				 catch(ClassCastException e){
-					 LOGGER.debug(e.getMessage());
-					
-				 }
-			 }
+				 
+			 	}
+			 
 			 }
 			 catch(Exception e){
-				 
-				 isSuccess = false;
+				 e.printStackTrace();
+				 throw new ExchangeRateNotFoundException("Data Not Loaded");
 			 }
-		}
-		else {
-			isSuccess = false;
-		}
-		
-		return isSuccess;
 	}
 	
-	public double fetchRate(String date, String curr){
-			
-		double rate = 0.0;
-		
-		Currency currency = repo.findByCurrNameAndDate(curr,date);
-		
-		if(currency!=null)
-			rate = currency.getRate();
-		
-		return rate;
-			
-		}
 	
+	public List<Currency> fetchRate(String date){
 		
-	@SuppressWarnings("deprecation")
-	public JsonNode fetchRate(String date){
+		String today =  LocalDate.now().toString();
 		
-		SimpleDateFormat simpleDate = new SimpleDateFormat("YYYY-MM-dd");
-		
-		String today = simpleDate.format(new Date());
-		
-		LOGGER.debug(today);
-		
-		List<Currency> currencyList = repo.findByDateBetween(date, today);
-		
-		LOGGER.debug("fetchRate : " + currencyList);
-		
-		ArrayNode outerNode = new ObjectMapper().createArrayNode();
-		
-
-		for (Currency currency : currencyList) {
-			
-			ObjectNode innerNode = new ObjectMapper().createObjectNode();
-			
-			innerNode.put("currency", currency.getCurrName());
-			innerNode.put("rate", currency.getRate());
-			innerNode.put("base", currency.getBaseCurr());
-			innerNode.put("date", currency.getDate());
-			
-//			outerNode.put(currency.getCurrName(), innerNode);
-			outerNode.add(innerNode);
-		}
-		
-		return outerNode;
-		
+		return repo.findByDocDateBetween(date, today);
 	}
 
 }

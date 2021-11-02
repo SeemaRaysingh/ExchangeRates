@@ -1,130 +1,133 @@
 package com.exchangerates.controller;
 
 import java.time.LocalDate;
-import java.time.temporal.TemporalAdjusters;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.exchangerates.constants.Constants;
-import com.exchangerates.response.Response;
-import com.exchangerates.services.CurrencyServiceImpl;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.exchangerates.dao.CurrencyRepo;
+import com.exchangerates.entity.Currency;
+import com.exchangerates.response.ApiResponse;
+import com.exchangerates.response.BaseResponse;
+import com.exchangerates.services.CurrencyService;
+import com.exchangerates.utility.Utility;
 
 @RestController
 public class CurrencyController {
 
 	@Autowired
-	CurrencyServiceImpl currencyServiceImpl;
+	private CurrencyService currencyService;
 	
-	@RequestMapping(value="/loadRates", method=RequestMethod.POST)
-	public ResponseEntity<Response> loadData(@RequestParam String date, @RequestParam List<String> currencyList){
+	@Autowired
+	private CurrencyRepo currencyRepo;
+	
+	@RequestMapping(value="/loadRatesByDateAndCurrencies", method=RequestMethod.GET,  produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<BaseResponse> loadExchangeRates(@RequestParam (value ="date")String date,
+					@RequestParam (value ="currencyList") List<String> currencyList){
 		
-		ObjectNode objectNode = new ObjectMapper().createObjectNode();
-		 
-		if(validateDate(date)){
+		String status = Utility.validateDate(date);
+	
+		if(status.equals(Constants.SUCCESS)){
 			
-			objectNode.put("message", "Date not allowed");
+			currencyService.loadData(date, currencyList);
 			
-			return new ResponseEntity<>(new Response(Constants.INVALID_DATA, objectNode), HttpStatus.OK);
-		}
-		
-		else{
-			if(currencyServiceImpl.loadData(date, currencyList)) {
-				objectNode.put("message", "Data Loaded");
-				return new ResponseEntity<>(new Response(Constants.SUCCESS,objectNode), HttpStatus.OK);
-			}
-			else {
-				objectNode.put("message", "Data Not Loaded");
-				return new ResponseEntity<>(new Response(Constants.FAILURE,objectNode), HttpStatus.OK);
-			}
-		}
-		
-	}
-	
-	
-	@RequestMapping(value="/loadRatesForDate", method=RequestMethod.POST)
-	public ResponseEntity<Response> loadData(@RequestParam String date, @RequestParam String currency, 
-			@RequestParam String baseCurrency){
-		
-		ObjectNode objectNode = new ObjectMapper().createObjectNode();
-		
-		if(currencyServiceImpl.loadData(date, currency, baseCurrency)){
-			objectNode.put("message", "Data Loaded");
-			return new ResponseEntity<>(new Response(Constants.SUCCESS,objectNode), HttpStatus.OK);
-	}
-	else {
-		objectNode.put("message", "Data Not Loaded");
-		return new ResponseEntity<>(new Response(Constants.FAILURE,objectNode), HttpStatus.OK);
-		}
-	
-	}
-	
-	@RequestMapping(value="/loadRatesForYear", method=RequestMethod.POST)
-	public ResponseEntity<Response> loadDataForWholeYear(@RequestParam String currency){
-	
-		ObjectNode objectNode = new ObjectMapper().createObjectNode();
-		
-		if(currencyServiceImpl.loadData(currency)) {
-			objectNode.put("message", "Data Loaded");
-			return new ResponseEntity<>(new Response(Constants.SUCCESS,objectNode), HttpStatus.OK);
-		}
+			return new ResponseEntity<>(new BaseResponse(true, "Rates Loaded Successfully", HttpStatus.OK.value()), HttpStatus.OK);
 			
-		else {
-			objectNode.put("message", "Data Not Loaded");
-			return new ResponseEntity<>(new Response(Constants.FAILURE,objectNode), HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>(new BaseResponse(false, status , HttpStatus.BAD_REQUEST.value()), HttpStatus.BAD_REQUEST);
 		}
-	
 	}
+		
 	
-	private boolean validateDate(String date){
+	@RequestMapping(value="/loadRate", method=RequestMethod.GET)
+	public ResponseEntity<BaseResponse> loadExchangeRates(@RequestParam String date, @RequestParam String currency, 
+			@RequestParam String base){
+		
+		Optional<LocalDate> validate = Optional.ofNullable(Utility.validateDateFormat(date));
+		
+		 String status = validate.isPresent() ? Constants.SUCCESS : Constants.INVALID_DATE_FORMAT;
 	
-		LocalDate currDocDate = LocalDate.now();
-		
-		LocalDate userLocalDate = LocalDate.parse(date);
-		
-		LocalDate dateToBeCheckWith = currDocDate.with(TemporalAdjusters.firstDayOfMonth()).minusMonths(12);
-		
-		if(userLocalDate.isBefore(dateToBeCheckWith) || userLocalDate.isAfter(currDocDate)) 
-			return true;
-		
-		else return false;
+		if(status.equals(Constants.SUCCESS)){
 			
+			currencyService.loadData(date, currency, base);
+			
+			return new ResponseEntity<>(new BaseResponse(true, "Rates Loaded Successfully", HttpStatus.OK.value()), HttpStatus.OK);
+			
+		}else {
+			return new ResponseEntity<>(new BaseResponse(false, status , HttpStatus.BAD_REQUEST.value()), HttpStatus.BAD_REQUEST);
+		}
 	}
+	
+	@RequestMapping(value="/loadRatesForYear/{currency}", method=RequestMethod.GET)
+	public ResponseEntity<BaseResponse> loadExchangeRates(@PathVariable("currency") String currency){
+	
+		currencyService.loadData(currency);
+		
+		return new ResponseEntity<>(new BaseResponse(true, "Rates Loaded Successfully for " + currency
+				, HttpStatus.OK.value()), HttpStatus.OK);
+	}
+	
 	
 	//User Story 2
 	
-	@RequestMapping(value="/getRate", method=RequestMethod.GET)
-	public ResponseEntity<Response> getRate(@RequestParam String date, @RequestParam String currency){
+	@RequestMapping(value="/getRateByDateAndCurrency", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<BaseResponse> getRate(@RequestParam(value ="date")String date, 
+			@RequestParam(value="currency") String currency){
 		
-		 double rate = currencyServiceImpl.fetchRate(date, currency);
-		 
-		 ObjectNode objectNode = new ObjectMapper().createObjectNode();
-		 
-		 objectNode.put("rate", rate);
-		 
-		 if(rate == 0.0)
-			 return new ResponseEntity<>(new Response(Constants.RATE_NOT_FOUND, objectNode),HttpStatus.OK);
-		 else
-			 return new ResponseEntity<>(new Response(Constants.SUCCESS, objectNode),HttpStatus.OK);
-			 
+		Optional<LocalDate> validate = Optional.ofNullable(Utility.validateDateFormat(date));
+		
+		if(validate.isPresent()){
+			
+			Currency currencyObj = currencyRepo.findByCurrencyAndDocDate(currency,date);
+			
+			System.out.println(currencyObj);
+
+			if(currencyObj != null) {
+
+				return new ResponseEntity<BaseResponse>(new ApiResponse	(true,"Rate is available"
+						, HttpStatus.OK.value(), currencyObj.getRate()),HttpStatus.OK);
+			}
+
+			else {
+				return new ResponseEntity<BaseResponse>(new BaseResponse(false,"Rate is not available for "
+						+ currency + " for date : "+ date, HttpStatus.NOT_FOUND.value()),
+						HttpStatus.NOT_FOUND);
+			}
+		}	else {
+			return new ResponseEntity<>(new BaseResponse(false, Constants.INVALID_DATE_FORMAT , HttpStatus.BAD_REQUEST.value()), HttpStatus.BAD_REQUEST);
+		}
+		
 	}
 	
-	@RequestMapping(value="/getRates", method=RequestMethod.GET)
-	public ResponseEntity<Response> getRatesForDateRange(@RequestParam String date){
+	@RequestMapping(value="/getRateByDate",method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<BaseResponse> getRatesForDateRange(@RequestParam("date") String date){
 		
-		 JsonNode objectNode = currencyServiceImpl.fetchRate(date);
-		 
-		return new ResponseEntity<>(new Response(Constants.SUCCESS, objectNode),HttpStatus.OK);
-			 
+		 Optional<LocalDate> validate = Optional.ofNullable(Utility.validateDateFormat(date));
+				
+		if(validate.isPresent()){
+			List<Currency> listOfCurrency  = currencyService.fetchRate(date);
+
+			if(!listOfCurrency.isEmpty()){
+
+				return new ResponseEntity<>(new ApiResponse(true,"Rates available " , HttpStatus.OK.value(), listOfCurrency),HttpStatus.OK);
+			}
+			else 
+				return new ResponseEntity<BaseResponse>(new BaseResponse(false, "Rate not available", HttpStatus.NOT_FOUND.value()),
+						HttpStatus.NOT_FOUND);
+				}
+		else {
+			return new ResponseEntity<>(new BaseResponse(false, Constants.INVALID_DATE_FORMAT , HttpStatus.BAD_REQUEST.value()), HttpStatus.BAD_REQUEST);
+		}
 	}
 	
 }

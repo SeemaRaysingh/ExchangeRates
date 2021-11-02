@@ -1,18 +1,21 @@
 package com.exchangerates.repo;
 
+import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import com.exchangerates.dao.CurrencyRepo;
-import com.exchangerates.model.Currency;
+import com.exchangerates.entity.Currency;
 
+@RunWith(SpringRunner.class)
 @DataJpaTest
 public class RepositoryTest {
 
@@ -22,38 +25,66 @@ public class RepositoryTest {
 	@Test
 	public void testFindByCurrNameAndDate(){
 		
-		Currency expected = new Currency("XAU", 6.49E-4,"2021-02-02", "EUR");
+		Currency expected = null;
 		
-		currencyRepo.save(expected);
+		Currency actualCurrencyObj = currencyRepo.findByCurrencyAndDocDate("XAU", "2021-02-02");
 		
-		Currency actualResult = currencyRepo.findByCurrNameAndDate("XAU", "2021-02-02");
-		
-		assertEquals(expected,actualResult);
-		
-//		assertThat(actualResult).isEqualTo(expected);
+		assertTrue(actualCurrencyObj == expected);
 		
 	}
 	
+	
 	@Test
-	public void testFindByDateBetween(String startDate, String endDate){
+	public void testFindByCurrNameAndDate1(){
+
+		Currency currency = new Currency("XAU", 6.49E-4, "2021-02-02", "EUR");
+
+		currencyRepo.save(currency);
+
+		boolean expected = true;
+
+		Currency actualCurrencyObj = currencyRepo.findByCurrencyAndDocDate("XAU", "2021-02-02");
+
+		boolean actual = (actualCurrencyObj.getCurrency().equals(currency.getCurrency()) &&
+				actualCurrencyObj.getDocDate().equals(currency.getDocDate())) ? true :false;
+
+		assertEquals(expected,actual);
+
+	}
+	
+	
+	@Test(expected=NullPointerException.class)
+	public void testNullInput() {
+
+		Currency actual = currencyRepo.findByCurrencyAndDocDate("XAU", "2021-02-02");
+
+		fail(actual.toString());
+	}
+	
+	
+	@Test
+	public void testFindByDateBetween(){
 		
 		Currency c1 = new Currency("XAU", 6.49E-4,"2021-02-02", "EUR");
 		Currency c2 = new Currency("XAG", 6.49E-4,"2021-03-02", "EUR");
 		Currency c3 = new Currency("GBP", 6.49E-4,"2021-04-02", "EUR");
 		
-		List<Currency> expected = new ArrayList<Currency>();
+		c1.setId(1);
+		c2.setId(2);
+		c3.setId(3);
 		
-		expected.add(c1);
-		expected.add(c2);
-		expected.add(c3);
+		List<Currency> data = new ArrayList<Currency>();
 		
-		currencyRepo.saveAll(expected);
+		data.add(c1);
+		data.add(c2);
+		data.add(c3);
 		
-		List<Currency> actual = currencyRepo.findByDateBetween("2021-02-02", "2021-10-29");
+		List<Currency> expected = currencyRepo.saveAll(data);
 		
-		assertEquals(expected, actual);
+		List<Currency> actual = currencyRepo.findByDocDateBetween("2021-02-02", "2021-10-30");
+		
+		assertEquals(expected.size(), actual.size());
 		
 	}
-
 
 }

@@ -53,7 +53,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<scope>runtime</scope>
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
@@ -62,7 +62,6 @@
 		<artifactId>commons-logging</artifactId>
 		<version>1.2</version>
 		</dependency>
-		
 		
 		<dependency>
 		<groupId>org.apache.logging.log4j</groupId>
@@ -92,15 +91,54 @@
 		<artifactId>disruptor</artifactId>
 		<version>3.4.2</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.powermock/powermock-module-junit4 -->
+	<dependency>
+	    <groupId>org.powermock</groupId>
+	    <artifactId>powermock-module-junit4</artifactId>
+	    <version>2.0.9</version>
+	    <scope>test</scope>
+	</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/org.powermock/powermock-api-mockito2 -->
+	<dependency>
+	    <groupId>org.powermock</groupId>
+	    <artifactId>powermock-api-mockito2</artifactId>
+	    <version>2.0.9</version>
+	    <scope>test</scope>
+	</dependency>
+	<dependency>
+	    <groupId>org.apache.commons</groupId>
+	    <artifactId>commons-collections4</artifactId>
+	    <version>4.2</version>
+	</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
 		<!-- <dependency>
-		<groupId>org.apache.logging.log4j</groupId>
-		<artifactId>log4j-nosql</artifactId>
-		<version>3.3.0</version>
-		</dependency> -->
+		    <groupId>org.mockito</groupId>
+		    <artifactId>mockito-core</artifactId>
+		    <version>2.28.2</version>
+		    <scope>test</scope>
+		</dependency>
+				https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter
+		<dependency>
+		    <groupId>org.mockito</groupId>
+		    <artifactId>mockito-junit-jupiter</artifactId>
+		    <version>2.28.2</version>
+		    <scope>test</scope>
+		</dependency>  -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 		
+		<dependency>
+		    <groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		    <version>4.13.2</version>
+		    <scope>test</scope>
+		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
