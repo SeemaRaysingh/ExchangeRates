@@ -6,6 +6,10 @@ public class ExchangeRateNotFoundException extends RuntimeException{
 	
 	String errorMessage;
 
+	/**
+	 * 
+	 * @param errorMessage
+	 */
 	public ExchangeRateNotFoundException(String errorMessage) {
 		super(errorMessage);
 	}

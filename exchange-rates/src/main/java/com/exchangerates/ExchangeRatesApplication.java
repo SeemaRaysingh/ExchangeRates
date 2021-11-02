@@ -13,7 +13,10 @@ public class ExchangeRatesApplication {
 		
 	}
 
-	
+	/**
+	 * This method returns the instance of RestTemplate
+	 * @return
+	 */
 	@Bean
 	public RestTemplate getRestTemplate(){
 		

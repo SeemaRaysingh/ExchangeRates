@@ -24,6 +24,13 @@ public class Currency {
 		super();
 	}
 
+	/**
+	 * 
+	 * @param currency
+	 * @param rate
+	 * @param docDate
+	 * @param base
+	 */
 	public Currency(String currency, double rate, String docDate, String base) {
 		super();
 		this.currency = currency;
@@ -32,42 +39,87 @@ public class Currency {
 		this.base = base;
 	}
 
+	/**
+	 * 
+	 * @return id
+	 */
 	public int getId() {
 		return id;
 	}
 
+	/**
+	 * 
+	 * @param id
+	 * set the id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * 
+	 * @return currency
+	 */
 	public String getCurrency() {
 		return currency;
 	}
 
+	/**
+	 * 
+	 * @param currency
+	 *  set the currency
+	 */
 	public void setCurrency(String currency) {
 		this.currency = currency;
 	}
 
+	/**
+	 * 
+	 * @return rate
+	 */
 	public double getRate() {
 		return rate;
 	}
 
+	/**
+	 * 
+	 * @param rate
+	 * set the rate
+	 */
 	public void setRate(double rate) {
 		this.rate = rate;
 	}
 
+	/**
+	 * 
+	 * @return docDate
+	 */
 	public String getDocDate() {
 		return docDate;
 	}
 
+	/**
+	 * 
+	 * @param docDate
+	 * set the docDate
+	 */
 	public void setDocDate(String docDate) {
 		this.docDate = docDate;
 	}
 
+	/**
+	 * 
+	 * @return base
+	 */
 	public String getBase() {
 		return base;
 	}
 
+	/**
+	 * 
+	 * @param base
+	 * set the base
+	 */
 	public void setBase(String base) {
 		this.base = base;
 	}
@@ -78,6 +130,10 @@ public class Currency {
 				+ rate + ", docDate=" + docDate + ", base=" + base + "]";
 	}
 	
+	/**
+	 * This method checks the equality of two currency objects based on the content
+	 * @return 
+	 */
 	public boolean equals(Object object){
 		
 		Currency currency = (Currency) object;

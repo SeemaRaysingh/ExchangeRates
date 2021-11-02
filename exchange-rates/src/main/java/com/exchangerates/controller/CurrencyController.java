@@ -31,6 +31,13 @@ public class CurrencyController {
 	@Autowired
 	private CurrencyRepo currencyRepo;
 	
+	/**
+	 * This method calls the service layer to load the exchange rates in database for given date and currencies
+	 * 
+	 * @param date
+	 * @param currencyList
+	 * @return
+	 */
 	@RequestMapping(value="/loadRatesByDateAndCurrencies", method=RequestMethod.GET,  produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<BaseResponse> loadExchangeRates(@RequestParam (value ="date")String date,
 					@RequestParam (value ="currencyList") List<String> currencyList){
@@ -48,7 +55,14 @@ public class CurrencyController {
 		}
 	}
 		
-	
+	/**
+	 * This method class the service layer to load the exchange rates in database for given date and currency and base
+	 * 
+	 * @param date
+	 * @param currency
+	 * @param base
+	 * @return
+	 */
 	@RequestMapping(value="/loadRate", method=RequestMethod.GET)
 	public ResponseEntity<BaseResponse> loadExchangeRates(@RequestParam String date, @RequestParam String currency, 
 			@RequestParam String base){
@@ -68,6 +82,11 @@ public class CurrencyController {
 		}
 	}
 	
+	/**
+	 * This method class the service layer to load the exchange rates for given currency for whole year
+	 * @param currency
+	 * @return
+	 */
 	@RequestMapping(value="/loadRatesForYear/{currency}", method=RequestMethod.GET)
 	public ResponseEntity<BaseResponse> loadExchangeRates(@PathVariable("currency") String currency){
 	
@@ -80,6 +99,13 @@ public class CurrencyController {
 	
 	//User Story 2
 	
+	/**
+	 * This method returns the rate for requested date and currency
+	 * 
+	 * @param date
+	 * @param currency
+	 * @return
+	 */
 	@RequestMapping(value="/getRateByDateAndCurrency", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<BaseResponse> getRate(@RequestParam(value ="date")String date, 
 			@RequestParam(value="currency") String currency){
@@ -90,8 +116,6 @@ public class CurrencyController {
 			
 			Currency currencyObj = currencyRepo.findByCurrencyAndDocDate(currency,date);
 			
-			System.out.println(currencyObj);
-
 			if(currencyObj != null) {
 
 				return new ResponseEntity<BaseResponse>(new ApiResponse	(true,"Rate is available"
@@ -109,6 +133,12 @@ public class CurrencyController {
 		
 	}
 	
+	
+	/**
+	 * This method returns the list of exchange rates from a given date to today
+	 * @param date
+	 * @return
+	 */
 	@RequestMapping(value="/getRateByDate",method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<BaseResponse> getRatesForDateRange(@RequestParam("date") String date){
 		

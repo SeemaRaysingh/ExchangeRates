@@ -18,6 +18,10 @@ import com.exchangerates.exceptionhandler.ExchangeRateNotFoundException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * This class provides implementation for CurrencySservice interface
+ *
+ */
 @Service
 public class CurrencyServiceImpl implements CurrencyService{
 
@@ -50,7 +54,13 @@ public class CurrencyServiceImpl implements CurrencyService{
 		this.repo = repo;
 	}
 
-	@Override //for date and list of currencies
+	/**
+	 * This method calls the external exchange rates API for given date and currencies
+	 * 
+	 * @param date
+	 * @param currencies
+	 */
+	@Override 
 	public void loadData(String date, List<String> currencies) {
 		
 		
@@ -72,7 +82,14 @@ public class CurrencyServiceImpl implements CurrencyService{
 		
 	}
 	
-	@Override // for particular date currency base
+	/**
+	 * This method calls external exchange API for given date, currency and base
+	 * 
+	 * @param date
+	 * @param currency
+	 * @param baseCurrency
+	 */
+	@Override
 	public void loadData(String date, String currency,String baseCurrency) {
 		
 		JsonNode responseNode = restTemplate.getForObject(url + date + "?access_key=" + accessKey + "&base="+baseCurrency+ "&symbols="+currency, JsonNode.class);
@@ -86,8 +103,15 @@ public class CurrencyServiceImpl implements CurrencyService{
 		}
 		 storeData(date,responseNode);
 	}
-
-	@Override  //whole year
+	
+	
+	/**
+	 * This method calculates the first date of month for each month for whole year
+	 * and calls exchange rate API for each date for the given currency
+	 * 
+	 * @param currency
+	 */
+	@Override
 	public void loadData(String currency) {
 		
 		LocalDate docDate = LocalDate.now();
@@ -114,6 +138,13 @@ public class CurrencyServiceImpl implements CurrencyService{
 		}
 	}
 	
+	
+	/**
+	 * This method stores the data in database received from exchange rates API 
+	 * 
+	 * @param date
+	 * @param responseNode
+	 */
 	public void storeData(String date,JsonNode responseNode){
 		
 		 try{
@@ -152,12 +183,17 @@ public class CurrencyServiceImpl implements CurrencyService{
 			 }
 	}
 	
-	
-	public List<Currency> fetchRate(String date){
-		
-		String today =  LocalDate.now().toString();
-		
-		return repo.findByDocDateBetween(date, today);
-	}
+	 /**
+	 * This method return the list of exchange rates which is selected from database from given date to today
+	 * 
+	 * @param date
+	 * 
+	 */
+		public List<Currency> fetchRate(String date){
+			
+			String today =  LocalDate.now().toString();
+			
+			return repo.findByDocDateBetween(date, today);
+		}
 
 }

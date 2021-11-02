@@ -9,6 +9,12 @@ public class BaseResponse {
 	private String message;
 	private int statusCode;
 
+	/**
+	 * 
+	 * @param status
+	 * @param message
+	 * @param statusCode
+	 */
 	public BaseResponse(boolean status, String message, int statusCode) {
 
 		this.timestamp = System.currentTimeMillis();
@@ -17,34 +23,70 @@ public class BaseResponse {
 		this.statusCode = statusCode;
 	}
 	
+	
+	/**
+	 * @return the timestamp
+	 */
 	public long getTimestamp() {
 		return timestamp;
 	}
 
+	
+	/**
+	 * @param timestamp
+	 * set the timestamp
+	 */
 	public void setTimestamp(long timestamp) {
 		this.timestamp = timestamp;
 	}
 
+	/**
+	 * 
+	 * @return the status
+	 */
 	public String getStatus() {
 		return status;
 	}
 
+	/**
+	 * 
+	 * @param status
+	 * set the status
+	 */
 	public void setStatus(String status) {
 		this.status = status;
 	}
 
+	/**
+	 * 
+	 * @return message
+	 */
 	public String getMessage() {
 		return message;
 	}
 
+	/**
+	 * 
+	 * @param message
+	 * set the message
+	 */
 	public void setMessage(String message) {
 		this.message = message;
 	}
-
+	
+	/**
+	 * 
+	 * @return statusCode
+	 */
 	public int getStatusCode() {
 		return statusCode;
 	}
 
+	/**
+	 * 
+	 * @param statusCode
+	 * set the statusCode
+	 */
 	public void setStatusCode(int statusCode) {
 		this.statusCode = statusCode;
 	}

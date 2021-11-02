@@ -10,11 +10,21 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.exchangerates.constants.Constants;
-
+/**
+ * 
+ * This class provides the utility methods to validate the date
+ *
+ */
 public class Utility {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(Utility.class);
 	
+	
+	/**
+	 * This method validates the date if it is in 12 months range
+	 * @param userDate
+	 * @return status
+	 */
 	public static String validateDate(String userDate){
 		
 		LocalDate userLocalDate;
@@ -50,6 +60,12 @@ public class Utility {
     	return status;
 	}
 	
+	
+	/**
+	 * This method validates the format of date, the format of the date should be "yyyy-MM-dd"
+	 * @param date
+	 * @return localDate
+	 */
 	public static LocalDate validateDateFormat(String date){
 		
 		String DATE_FORMAT = "yyyy-MM-dd";
