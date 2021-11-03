@@ -1,0 +1,48 @@
+server:
+  port: 8810
+
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: loadRatesByDateAndCurrencies
+        uri: http://localhost:7770
+        predicates:
+        - Path=/saveRatesByDateAndCurrencies/**
+        - Query=date,
+        - Query=currencyList
+        filters:
+        - RewritePath=/saveRatesByDateAndCurrencies, /loadRatesByDateAndCurrencies
+      - id: loadRate
+        uri: http://localhost:7770
+        predicates:
+        - Path=/saveRate/**
+        - Query=date,
+        - Query=currency,
+        - Query=base
+        filters:
+        - RewritePath=/saveRate, /loadRate
+      - id: loadRatesForYear
+        uri: http://localhost:7770
+        predicates:
+        - Path=/saveRatesForYear/{currency}
+        filters:
+        - SetPath=/loadRatesForYear/{currency}
+      - id: getRateByDateAndCurrency
+        uri: http://localhost:7770
+        predicates:
+        - Path=/fetchRateByDateAndCurrency/**
+        - Query=date,
+        - Query=currency,
+        filters:
+        - RewritePath=/fetchRateByDateAndCurrency, /getRateByDateAndCurrency
+      - id: getRateByDate
+        uri: http://localhost:7770
+        predicates:
+        - Path=/fetchRateByDate/**
+        - Query=date
+        filters:
+        - RewritePath=/fetchRateByDate, /getRateByDate
+         
+        
+   

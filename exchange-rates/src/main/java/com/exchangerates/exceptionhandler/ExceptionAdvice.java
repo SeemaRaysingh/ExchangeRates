@@ -41,7 +41,7 @@ public class ExceptionAdvice {
 	@ExceptionHandler(HttpClientErrorException.class)
 	public ResponseEntity<BaseResponse> handleHttpClientErrorException(){
 		
-		BaseResponse response = new BaseResponse(false, "Rates not available", HttpStatus.NOT_FOUND.value());
+		BaseResponse response = new BaseResponse(false, "Rates not Loaded", HttpStatus.NOT_FOUND.value());
 				
 		return new ResponseEntity<BaseResponse>(response, HttpStatus.NOT_FOUND);
 		
