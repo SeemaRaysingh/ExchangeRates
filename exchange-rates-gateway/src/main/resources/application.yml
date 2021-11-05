@@ -5,44 +5,44 @@ spring:
   cloud:
     gateway:
       routes:
-      - id: loadRatesByDateAndCurrencies
+      - id: Rates_By_Date_And_Currencies
         uri: http://localhost:7770
         predicates:
-        - Path=/saveRatesByDateAndCurrencies/**
+        - Path=/Exchange_Rates_By_Date_And_Currencies/**
         - Query=date,
         - Query=currencyList
         filters:
-        - RewritePath=/saveRatesByDateAndCurrencies, /loadRatesByDateAndCurrencies
-      - id: loadRate
+        - RewritePath=/Exchange_Rates_By_Date_And_Currencies, /Rates_By_Date_And_Currencies
+      - id: Rate
         uri: http://localhost:7770
         predicates:
-        - Path=/saveRate/**
+        - Path=/Exchange_Rate/**
         - Query=date,
         - Query=currency,
         - Query=base
         filters:
-        - RewritePath=/saveRate, /loadRate
-      - id: loadRatesForYear
+        - RewritePath=/Exchange_Rate, /Rate
+      - id: Rates_For_Year
         uri: http://localhost:7770
         predicates:
-        - Path=/saveRatesForYear/{currency}
+        - Path=/Exchange_Rates_For_Year/{currency}
         filters:
-        - SetPath=/loadRatesForYear/{currency}
-      - id: getRateByDateAndCurrency
+        - SetPath=/Rates_For_Year/{currency}
+      - id: Rate_By_Date_And_Currency
         uri: http://localhost:7770
         predicates:
-        - Path=/fetchRateByDateAndCurrency/**
+        - Path=/Exchange_Rate_By_Date_And_Currency/**
         - Query=date,
         - Query=currency,
         filters:
-        - RewritePath=/fetchRateByDateAndCurrency, /getRateByDateAndCurrency
-      - id: getRateByDate
+        - RewritePath=/Exchange_Rate_By_Date_And_Currency, /Rate_By_Date_And_Currency
+      - id: Rate_By_Date
         uri: http://localhost:7770
         predicates:
-        - Path=/fetchRateByDate/**
+        - Path=/Exchange_Rate_By_Date/**
         - Query=date
         filters:
-        - RewritePath=/fetchRateByDate, /getRateByDate
+        - RewritePath=/Exchange_Rate_By_Date, /Rate_By_Date
          
         
    

@@ -38,7 +38,7 @@ public class CurrencyController {
 	 * @param currencyList
 	 * @return
 	 */
-	@RequestMapping(value="/loadRatesByDateAndCurrencies", method=RequestMethod.GET,  produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/Rates_By_Date_And_Currencies", method=RequestMethod.GET,  produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<BaseResponse> loadExchangeRates(@RequestParam (value ="date")String date,
 					@RequestParam (value ="currencyList") List<String> currencyList){
 		
@@ -48,7 +48,7 @@ public class CurrencyController {
 			
 			currencyService.loadData(date, currencyList);
 			
-			return new ResponseEntity<>(new BaseResponse(true, "Rates Loaded Successfully", HttpStatus.OK.value()), HttpStatus.OK);
+			return new ResponseEntity<>(new BaseResponse(true, Constants.RATE_LOADED, HttpStatus.OK.value()), HttpStatus.OK);
 			
 		}else {
 			return new ResponseEntity<>(new BaseResponse(false, status , HttpStatus.BAD_REQUEST.value()), HttpStatus.BAD_REQUEST);
@@ -63,7 +63,7 @@ public class CurrencyController {
 	 * @param base
 	 * @return
 	 */
-	@RequestMapping(value="/loadRate", method=RequestMethod.GET)
+	@RequestMapping(value="/Rate", method=RequestMethod.GET)
 	public ResponseEntity<BaseResponse> loadExchangeRates(@RequestParam String date, @RequestParam String currency, 
 			@RequestParam String base){
 		
@@ -75,7 +75,7 @@ public class CurrencyController {
 			
 			currencyService.loadData(date, currency, base);
 			
-			return new ResponseEntity<>(new BaseResponse(true, "Rates Loaded Successfully", HttpStatus.OK.value()), HttpStatus.OK);
+			return new ResponseEntity<>(new BaseResponse(true, Constants.RATE_LOADED, HttpStatus.OK.value()), HttpStatus.OK);
 			
 		}else {
 			return new ResponseEntity<>(new BaseResponse(false, status , HttpStatus.BAD_REQUEST.value()), HttpStatus.BAD_REQUEST);
@@ -87,12 +87,12 @@ public class CurrencyController {
 	 * @param currency
 	 * @return
 	 */
-	@RequestMapping(value="/loadRatesForYear/{currency}", method=RequestMethod.GET)
+	@RequestMapping(value="/Rates_For_Year/{currency}", method=RequestMethod.GET)
 	public ResponseEntity<BaseResponse> loadExchangeRates(@PathVariable("currency") String currency){
 	
 		currencyService.loadData(currency);
 		
-		return new ResponseEntity<>(new BaseResponse(true, "Rates Loaded Successfully for " + currency
+		return new ResponseEntity<>(new BaseResponse(true, Constants.RATE_LOADED + " for " + currency
 				, HttpStatus.OK.value()), HttpStatus.OK);
 	}
 	
@@ -106,7 +106,7 @@ public class CurrencyController {
 	 * @param currency
 	 * @return
 	 */
-	@RequestMapping(value="/getRateByDateAndCurrency", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/Rate_By_Date_And_Currency", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<BaseResponse> getRate(@RequestParam(value ="date")String date, 
 			@RequestParam(value="currency") String currency){
 		
@@ -139,7 +139,7 @@ public class CurrencyController {
 	 * @param date
 	 * @return
 	 */
-	@RequestMapping(value="/getRateByDate",method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/Rate_By_Date",method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<BaseResponse> getRatesForDateRange(@RequestParam("date") String date){
 		
 		 Optional<LocalDate> validate = Optional.ofNullable(Utility.validateDateFormat(date));
@@ -149,10 +149,10 @@ public class CurrencyController {
 
 			if(!listOfCurrency.isEmpty()){
 
-				return new ResponseEntity<>(new ApiResponse(true,"Rates available " , HttpStatus.OK.value(), listOfCurrency),HttpStatus.OK);
+				return new ResponseEntity<>(new ApiResponse(true, Constants.RATE_AVAILABLE , HttpStatus.OK.value(), listOfCurrency),HttpStatus.OK);
 			}
 			else 
-				return new ResponseEntity<BaseResponse>(new BaseResponse(false, "Rate not available", HttpStatus.NOT_FOUND.value()),
+				return new ResponseEntity<BaseResponse>(new BaseResponse(false, Constants.RATE_NOT_AVAILABLE, HttpStatus.NOT_FOUND.value()),
 						HttpStatus.NOT_FOUND);
 				}
 		else {

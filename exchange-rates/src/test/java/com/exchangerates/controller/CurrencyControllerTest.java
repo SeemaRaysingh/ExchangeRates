@@ -34,7 +34,7 @@ public class CurrencyControllerTest {
 	@org.junit.Test
 	public void canLoadExchangeRates() throws Exception{
 
-		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/loadRate")
+		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/Rate")
 				.param("date", "2021-11-11")
 				.param("currency", "XAU")
 				.param("base", "EUR"))
@@ -49,7 +49,7 @@ public class CurrencyControllerTest {
 	@org.junit.Test
 	public void canNotLoadExchangeRates() throws Exception{
 
-		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/loadRate")
+		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/Rate")
 				.param("date", "2021/11/11")
 				.param("currency", "XAU")
 				.param("base", "EUR"))
@@ -64,7 +64,7 @@ public class CurrencyControllerTest {
 	@Test
 	public void canLoadRatesForYear() throws Exception{
 		
-		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/loadRatesForYear/{currency}", "XAU"))
+		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/Rates_For_Year/{currency}", "XAU"))
 				.andReturn();
 		
 		int status = mvcResult.getResponse().getStatus();
@@ -82,7 +82,7 @@ public class CurrencyControllerTest {
 		Mockito.when(currencyRepo.findByCurrencyAndDocDate(Mockito.anyString(), Mockito.anyString())).thenReturn(currency);
 		
 		
-		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/getRateByDateAndCurrency")
+		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/Rate_By_Date_And_Currency")
 				.param("date", "2021-11-11")
 				.param("currency", "XAU").accept(MediaType.APPLICATION_JSON_VALUE))
 				.andReturn();
@@ -99,7 +99,7 @@ public class CurrencyControllerTest {
 		Mockito.when(currencyRepo.findByCurrencyAndDocDate(Mockito.anyString(), Mockito.anyString())).thenReturn(null);
 		
 		
-		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/getRateByDateAndCurrency")
+		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/Rate_By_Date_And_Currency")
 				.param("date", "2021-11-11")
 				.param("currency", "XAU").accept(MediaType.APPLICATION_JSON_VALUE))
 				.andReturn();

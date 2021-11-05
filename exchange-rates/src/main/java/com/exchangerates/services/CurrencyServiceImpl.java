@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.exchangerates.constants.Constants;
 import com.exchangerates.dao.CurrencyRepo;
 import com.exchangerates.entity.Currency;
 import com.exchangerates.exceptionhandler.ExchangeRateNotFoundException;
@@ -74,7 +75,7 @@ public class CurrencyServiceImpl implements CurrencyService{
 		
 		if(!responseNode.has("success")){
 			
-			throw new ExchangeRateNotFoundException("Data Not Loaded for " + currencies );
+			throw new ExchangeRateNotFoundException(Constants.RATE_NOT_LOADED + currencies );
 			
 		}
 		
@@ -98,7 +99,7 @@ public class CurrencyServiceImpl implements CurrencyService{
 
 		if(!responseNode.has("success")){
 			
-			throw new ExchangeRateNotFoundException("Data Not Loaded for " + currency );
+			throw new ExchangeRateNotFoundException(Constants.RATE_NOT_LOADED + currency );
 			
 		}
 		 storeData(date,responseNode);
@@ -128,7 +129,7 @@ public class CurrencyServiceImpl implements CurrencyService{
 		
 		if(!responseNode.has("success")){
 				
-				throw new ExchangeRateNotFoundException("Data Not Loaded for " + currency );
+				throw new ExchangeRateNotFoundException(Constants.RATE_NOT_LOADED + currency );
 				
 		}
 		storeData(firstDayOfMonth.toString(),responseNode);
@@ -162,8 +163,6 @@ public class CurrencyServiceImpl implements CurrencyService{
 				 
 				 Currency currencyObj = repo.findByCurrencyAndDocDate(entry.getKey(), date);
 				 if(currencyObj != null) {
-					  //assuming rate will not change for particular date
-					
 					 continue;
 				 }
 				 Currency currency = new Currency();
@@ -179,7 +178,7 @@ public class CurrencyServiceImpl implements CurrencyService{
 			 }
 			 catch(Exception e){
 				 e.printStackTrace();
-				 throw new ExchangeRateNotFoundException("Data Not Loaded");
+				 throw new ExchangeRateNotFoundException(Constants.RATE_NOT_LOADED);
 			 }
 	}
 	

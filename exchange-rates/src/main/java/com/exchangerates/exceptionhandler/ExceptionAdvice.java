@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.client.HttpClientErrorException;
 
+import com.exchangerates.constants.Constants;
 import com.exchangerates.response.BaseResponse;
 
 /**
@@ -41,7 +42,7 @@ public class ExceptionAdvice {
 	@ExceptionHandler(HttpClientErrorException.class)
 	public ResponseEntity<BaseResponse> handleHttpClientErrorException(){
 		
-		BaseResponse response = new BaseResponse(false, "Rates not Loaded", HttpStatus.NOT_FOUND.value());
+		BaseResponse response = new BaseResponse(false, Constants.RATE_NOT_LOADED, HttpStatus.NOT_FOUND.value());
 				
 		return new ResponseEntity<BaseResponse>(response, HttpStatus.NOT_FOUND);
 		
