@@ -8,41 +8,41 @@ spring:
       - id: Rates_By_Date_And_Currencies
         uri: http://localhost:7770
         predicates:
-        - Path=/Exchange_Rates_By_Date_And_Currencies/**
+        - Path=/exchange_rates_by_date_and_currencies/**
         - Query=date,
         - Query=currencyList
         filters:
-        - RewritePath=/Exchange_Rates_By_Date_And_Currencies, /Rates_By_Date_And_Currencies
+        - RewritePath=/exchange_rates_by_date_and_currencies, /rates_by_date_and_currencies
       - id: Rate
         uri: http://localhost:7770
         predicates:
-        - Path=/Exchange_Rate/**
+        - Path=/exchange_rate/**
         - Query=date,
         - Query=currency,
         - Query=base
         filters:
-        - RewritePath=/Exchange_Rate, /Rate
+        - RewritePath=/exchange_rate, /rate
       - id: Rates_For_Year
         uri: http://localhost:7770
         predicates:
-        - Path=/Exchange_Rates_For_Year/{currency}
+        - Path=/exchange_rates_for_year/{currency}
         filters:
-        - SetPath=/Rates_For_Year/{currency}
+        - SetPath=/rates_for_year/{currency}
       - id: Rate_By_Date_And_Currency
         uri: http://localhost:7770
         predicates:
-        - Path=/Exchange_Rate_By_Date_And_Currency/**
+        - Path=/exchange_rate_by_date_and_currency/**
         - Query=date,
         - Query=currency,
         filters:
-        - RewritePath=/Exchange_Rate_By_Date_And_Currency, /Rate_By_Date_And_Currency
+        - RewritePath=/exchange_rate_by_date_and_currency, /rate_by_date_and_currency
       - id: Rate_By_Date
         uri: http://localhost:7770
         predicates:
-        - Path=/Exchange_Rate_By_Date/**
+        - Path=/exchange_rate_by_date/**
         - Query=date
         filters:
-        - RewritePath=/Exchange_Rate_By_Date, /Rate_By_Date
+        - RewritePath=/exchange_rate_by_date, /rate_by_date
          
         
    

@@ -1,0 +1,180 @@
+[INFO ] 2021-11-05 07:48:29.997 [main] CurrencyControllerTest - Starting CurrencyControllerTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 1376 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 07:48:30.013 [main] CurrencyControllerTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 07:48:30.015 [main] CurrencyControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 07:48:34.468 [main] CurrencyControllerTest - Started CurrencyControllerTest in 5.123 seconds (JVM running for 8.016)
+[DEBUG] 2021-11-05 07:48:34.866 [main] Utility - DateTimeException
+[DEBUG] 2021-11-05 07:48:35.182 [main] CurrencyServiceImpl - null2020-11-11?access_key=null&symbols=XAU
+[DEBUG] 2021-11-05 07:48:35.184 [main] CurrencyServiceImpl - Response : {"success":"true","timestamp":"564687465","historical":"true","base":"EUR","date":"2020-11-11","rates":{"XAU":0.853913}}
+[DEBUG] 2021-11-05 07:48:35.210 [main] Utility - DateTimeException
+[INFO ] 2021-11-05 07:48:35.272 [main] RepositoryTest - Starting RepositoryTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 1376 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 07:48:35.274 [main] RepositoryTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 07:48:35.275 [main] RepositoryTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 07:48:38.767 [main] RepositoryTest - Started RepositoryTest in 3.55 seconds (JVM running for 12.315)
+[INFO ] 2021-11-05 10:42:16.041 [main] CurrencyControllerTest - Starting CurrencyControllerTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 5116 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 10:42:16.104 [main] CurrencyControllerTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 10:42:16.107 [main] CurrencyControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 10:42:31.728 [main] CurrencyControllerTest - Started CurrencyControllerTest in 17.713 seconds (JVM running for 26.321)
+[DEBUG] 2021-11-05 10:42:32.977 [main] Utility - DateTimeException
+[DEBUG] 2021-11-05 10:42:33.861 [main] CurrencyServiceImpl - null2020-11-11?access_key=null&symbols=XAU
+[DEBUG] 2021-11-05 10:42:33.869 [main] CurrencyServiceImpl - Response : {"success":"true","timestamp":"564687465","historical":"true","base":"EUR","date":"2020-11-11","rates":{"XAU":0.853913}}
+[DEBUG] 2021-11-05 10:42:33.958 [main] Utility - DateTimeException
+[INFO ] 2021-11-05 10:42:34.101 [main] RepositoryTest - Starting RepositoryTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 5116 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 10:42:34.103 [main] RepositoryTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 10:42:34.108 [main] RepositoryTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 10:42:45.268 [main] RepositoryTest - Started RepositoryTest in 11.293 seconds (JVM running for 39.86)
+[INFO ] 2021-11-05 11:13:55.039 [main] CurrencyControllerTest - Starting CurrencyControllerTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 12260 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 11:13:55.073 [main] CurrencyControllerTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 11:13:55.076 [main] CurrencyControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 11:14:00.056 [main] CurrencyControllerTest - Starting CurrencyControllerTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 12260 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 11:14:00.065 [main] CurrencyControllerTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 11:14:00.070 [main] CurrencyControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 11:14:01.092 [main] CurrencyControllerTest - Starting CurrencyControllerTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 12260 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 11:14:01.096 [main] CurrencyControllerTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 11:14:01.099 [main] CurrencyControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 11:14:01.888 [main] CurrencyControllerTest - Starting CurrencyControllerTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 12260 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 11:14:01.890 [main] CurrencyControllerTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 11:14:01.891 [main] CurrencyControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 11:14:02.725 [main] CurrencyControllerTest - Starting CurrencyControllerTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 12260 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 11:14:02.731 [main] CurrencyControllerTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 11:14:02.737 [main] CurrencyControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 11:14:37.987 [main] CurrencyControllerTest - Starting CurrencyControllerTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 6848 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 11:14:38.009 [main] CurrencyControllerTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 11:14:38.016 [main] CurrencyControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 11:14:46.547 [main] CurrencyControllerTest - Started CurrencyControllerTest in 9.395 seconds (JVM running for 13.351)
+[DEBUG] 2021-11-05 11:14:48.167 [main] Utility - DateTimeException
+[INFO ] 2021-11-05 11:17:49.896 [main] CurrencyControllerTest - Starting CurrencyControllerTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 10700 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 11:17:49.916 [main] CurrencyControllerTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 11:17:49.923 [main] CurrencyControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 11:17:52.830 [main] CurrencyControllerTest - Starting CurrencyControllerTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 10700 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 11:17:52.832 [main] CurrencyControllerTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 11:17:52.834 [main] CurrencyControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 11:17:53.812 [main] CurrencyControllerTest - Starting CurrencyControllerTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 10700 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 11:17:53.815 [main] CurrencyControllerTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 11:17:53.823 [main] CurrencyControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 11:17:55.113 [main] CurrencyControllerTest - Starting CurrencyControllerTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 10700 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 11:17:55.115 [main] CurrencyControllerTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 11:17:55.116 [main] CurrencyControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 11:17:56.296 [main] CurrencyControllerTest - Starting CurrencyControllerTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 10700 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 11:17:56.298 [main] CurrencyControllerTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 11:17:56.308 [main] CurrencyControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 11:18:49.091 [main] CurrencyControllerTest - Starting CurrencyControllerTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 11176 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 11:18:49.119 [main] CurrencyControllerTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 11:18:49.125 [main] CurrencyControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 11:18:52.553 [main] CurrencyControllerTest - Starting CurrencyControllerTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 11176 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 11:18:52.555 [main] CurrencyControllerTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 11:18:52.563 [main] CurrencyControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 11:18:53.424 [main] CurrencyControllerTest - Starting CurrencyControllerTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 11176 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 11:18:53.426 [main] CurrencyControllerTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 11:18:53.428 [main] CurrencyControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 11:18:54.400 [main] CurrencyControllerTest - Starting CurrencyControllerTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 11176 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 11:18:54.401 [main] CurrencyControllerTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 11:18:54.402 [main] CurrencyControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 11:18:55.962 [main] CurrencyControllerTest - Starting CurrencyControllerTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 11176 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 11:18:55.981 [main] CurrencyControllerTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 11:18:55.985 [main] CurrencyControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 11:19:22.949 [main] CurrencyControllerTest - Starting CurrencyControllerTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 9076 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 11:19:22.971 [main] CurrencyControllerTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 11:19:22.976 [main] CurrencyControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 11:19:31.968 [main] CurrencyControllerTest - Started CurrencyControllerTest in 10.463 seconds (JVM running for 15.745)
+[DEBUG] 2021-11-05 11:19:32.996 [main] Utility - DateTimeException
+[DEBUG] 2021-11-05 11:19:33.971 [main] CurrencyServiceImpl - null2020-11-11?access_key=null&symbols=XAU
+[DEBUG] 2021-11-05 11:19:33.976 [main] CurrencyServiceImpl - Response : {"success":"true","timestamp":"564687465","historical":"true","base":"EUR","date":"2020-11-11","rates":{"XAU":0.853913}}
+[DEBUG] 2021-11-05 11:19:34.015 [main] Utility - DateTimeException
+[INFO ] 2021-11-05 11:19:34.145 [main] RepositoryTest - Starting RepositoryTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 9076 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 11:19:34.147 [main] RepositoryTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 11:19:34.161 [main] RepositoryTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 11:19:44.221 [main] RepositoryTest - Started RepositoryTest in 10.196 seconds (JVM running for 27.998)
+[INFO ] 2021-11-05 11:20:59.783 [main] CurrencyControllerTest - Starting CurrencyControllerTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 11396 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 11:20:59.825 [main] CurrencyControllerTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 11:20:59.835 [main] CurrencyControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 11:21:18.108 [main] CurrencyControllerTest - Started CurrencyControllerTest in 19.907 seconds (JVM running for 24.999)
+[DEBUG] 2021-11-05 11:21:21.026 [main] Utility - DateTimeException
+[DEBUG] 2021-11-05 11:21:23.040 [main] CurrencyServiceImpl - null2020-11-11?access_key=null&symbols=XAU
+[DEBUG] 2021-11-05 11:21:23.082 [main] CurrencyServiceImpl - Response : {"success":"true","timestamp":"564687465","historical":"true","base":"EUR","date":"2020-11-11","rates":{"XAU":0.853913}}
+[DEBUG] 2021-11-05 11:21:23.172 [main] Utility - DateTimeException
+[INFO ] 2021-11-05 11:21:23.656 [main] RepositoryTest - Starting RepositoryTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 11396 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 11:21:23.658 [main] RepositoryTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 11:21:23.674 [main] RepositoryTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 11:21:52.958 [main] RepositoryTest - Started RepositoryTest in 29.705 seconds (JVM running for 59.849)
+[INFO ] 2021-11-05 11:44:32.555 [main] CurrencyControllerTest - Starting CurrencyControllerTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 7216 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 11:44:32.640 [main] CurrencyControllerTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 11:44:32.642 [main] CurrencyControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 11:44:40.711 [main] CurrencyControllerTest - Started CurrencyControllerTest in 9.056 seconds (JVM running for 12.525)
+[DEBUG] 2021-11-05 11:44:41.692 [main] Utility - DateTimeException
+[DEBUG] 2021-11-05 11:44:42.167 [main] CurrencyServiceImpl - null2020-11-11?access_key=null&symbols=XAU
+[DEBUG] 2021-11-05 11:44:42.170 [main] CurrencyServiceImpl - Response : {"success":"true","timestamp":"564687465","historical":"true","base":"EUR","date":"2020-11-11","rates":{"XAU":0.853913}}
+[DEBUG] 2021-11-05 11:44:42.205 [main] Utility - DateTimeException
+[INFO ] 2021-11-05 11:44:42.271 [main] RepositoryTest - Starting RepositoryTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 7216 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 11:44:42.272 [main] RepositoryTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 11:44:42.274 [main] RepositoryTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 11:44:49.323 [main] RepositoryTest - Started RepositoryTest in 7.104 seconds (JVM running for 21.136)
+[INFO ] 2021-11-05 12:17:52.909 [main] ExchangeRatesApplication - Starting ExchangeRatesApplication using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 4716 (C:\Users\Home\git\ExchangeRates\exchange-rates\target\classes started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-05 12:17:52.982 [main] ExchangeRatesApplication - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-05 12:17:52.982 [main] ExchangeRatesApplication - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-05 12:18:17.470 [main] ExchangeRatesApplication - Started ExchangeRatesApplication in 26.707 seconds (JVM running for 28.961)
+[INFO ] 2021-11-07 18:41:19.223 [main] CurrencyControllerTest - Starting CurrencyControllerTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 11072 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-07 18:41:19.247 [main] CurrencyControllerTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-07 18:41:19.247 [main] CurrencyControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-07 18:41:25.344 [main] CurrencyControllerTest - Started CurrencyControllerTest in 6.854 seconds (JVM running for 10.372)
+[DEBUG] 2021-11-07 18:41:26.289 [main] Utility - DateTimeException
+[DEBUG] 2021-11-07 18:41:26.950 [main] CurrencyServiceImpl - null2020-11-11?access_key=null&symbols=XAU
+[DEBUG] 2021-11-07 18:41:26.966 [main] CurrencyServiceImpl - Response : {"success":"true","timestamp":"564687465","historical":"true","base":"EUR","date":"2020-11-11","rates":{"XAU":0.853913}}
+[DEBUG] 2021-11-07 18:41:27.022 [main] Utility - DateTimeException
+[INFO ] 2021-11-07 18:41:27.126 [main] RepositoryTest - Starting RepositoryTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 11072 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-07 18:41:27.126 [main] RepositoryTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-07 18:41:27.126 [main] RepositoryTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-07 18:41:34.186 [main] RepositoryTest - Started RepositoryTest in 7.149 seconds (JVM running for 19.213)
+[INFO ] 2021-11-07 18:42:05.612 [main] ExchangeRatesApplication - Starting ExchangeRatesApplication using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 7692 (C:\Users\Home\git\ExchangeRates\exchange-rates\target\classes started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-07 18:42:05.628 [main] ExchangeRatesApplication - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-07 18:42:05.628 [main] ExchangeRatesApplication - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-07 18:42:35.953 [main] ExchangeRatesApplication - Started ExchangeRatesApplication in 31.661 seconds (JVM running for 33.981)
+[DEBUG] 2021-11-07 18:48:32.405 [http-nio-7770-exec-9] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2020-11-11?access_key=088836a96b5eb919db3692b134042f24&symbols=XAU,XAG,GBP
+[DEBUG] 2021-11-07 18:48:32.417 [http-nio-7770-exec-9] CurrencyServiceImpl - Response : {"success":true,"timestamp":1605139199,"historical":true,"base":"EUR","date":"2020-11-11","rates":{"XAU":6.32E-4,"XAG":0.0486,"GBP":0.890799}}
+[DEBUG] 2021-11-07 18:48:46.864 [http-nio-7770-exec-7] Utility - DateTimeException
+[DEBUG] 2021-11-07 18:49:50.411 [http-nio-7770-exec-10] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-09-08?access_key=088836a96b5eb919db3692b134042f24&base=EUR&symbols=JPY
+[DEBUG] 2021-11-07 18:50:17.543 [http-nio-7770-exec-4] Utility - DateTimeException
+[DEBUG] 2021-11-07 18:51:18.891 [http-nio-7770-exec-10] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-11-01?access_key=088836a96b5eb919db3692b134042f24&symbols=GBP
+[DEBUG] 2021-11-07 18:51:19.458 [http-nio-7770-exec-10] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-10-01?access_key=088836a96b5eb919db3692b134042f24&symbols=GBP
+[DEBUG] 2021-11-07 18:51:19.987 [http-nio-7770-exec-10] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-09-01?access_key=088836a96b5eb919db3692b134042f24&symbols=GBP
+[DEBUG] 2021-11-07 18:51:20.272 [http-nio-7770-exec-10] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-08-01?access_key=088836a96b5eb919db3692b134042f24&symbols=GBP
+[DEBUG] 2021-11-07 18:51:20.828 [http-nio-7770-exec-10] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-07-01?access_key=088836a96b5eb919db3692b134042f24&symbols=GBP
+[DEBUG] 2021-11-07 18:51:21.383 [http-nio-7770-exec-10] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-06-01?access_key=088836a96b5eb919db3692b134042f24&symbols=GBP
+[DEBUG] 2021-11-07 18:51:21.919 [http-nio-7770-exec-10] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-05-01?access_key=088836a96b5eb919db3692b134042f24&symbols=GBP
+[DEBUG] 2021-11-07 18:51:22.460 [http-nio-7770-exec-10] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-04-01?access_key=088836a96b5eb919db3692b134042f24&symbols=GBP
+[DEBUG] 2021-11-07 18:51:22.749 [http-nio-7770-exec-10] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-03-01?access_key=088836a96b5eb919db3692b134042f24&symbols=GBP
+[DEBUG] 2021-11-07 18:51:23.058 [http-nio-7770-exec-10] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-02-01?access_key=088836a96b5eb919db3692b134042f24&symbols=GBP
+[DEBUG] 2021-11-07 18:51:23.607 [http-nio-7770-exec-10] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-01-01?access_key=088836a96b5eb919db3692b134042f24&symbols=GBP
+[DEBUG] 2021-11-07 18:51:23.899 [http-nio-7770-exec-10] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2020-12-01?access_key=088836a96b5eb919db3692b134042f24&symbols=GBP
+[INFO ] 2021-11-09 19:09:16.224 [main] CurrencyControllerTest - Starting CurrencyControllerTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 11256 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-09 19:09:16.240 [main] CurrencyControllerTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-09 19:09:16.243 [main] CurrencyControllerTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-09 19:09:22.079 [main] CurrencyControllerTest - Started CurrencyControllerTest in 6.634 seconds (JVM running for 10.097)
+[DEBUG] 2021-11-09 19:09:23.188 [main] Utility - DateTimeException
+[DEBUG] 2021-11-09 19:09:23.781 [main] CurrencyServiceImpl - null2020-11-11?access_key=null&symbols=XAU
+[DEBUG] 2021-11-09 19:09:23.784 [main] CurrencyServiceImpl - Response : {"success":"true","timestamp":"564687465","historical":"true","base":"EUR","date":"2020-11-11","rates":{"XAU":0.853913}}
+[DEBUG] 2021-11-09 19:09:23.815 [main] Utility - DateTimeException
+[INFO ] 2021-11-09 19:09:23.878 [main] RepositoryTest - Starting RepositoryTest using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 11256 (started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-09 19:09:23.880 [main] RepositoryTest - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-09 19:09:23.881 [main] RepositoryTest - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-09 19:09:30.883 [main] RepositoryTest - Started RepositoryTest in 7.057 seconds (JVM running for 18.9)
+[INFO ] 2021-11-09 19:10:06.950 [main] ExchangeRatesApplication - Starting ExchangeRatesApplication using Java 1.8.0_77 on DESKTOP-PLLLS75 with PID 10036 (C:\Users\Home\git\ExchangeRates\exchange-rates\target\classes started by Home in C:\Users\Home\git\ExchangeRates\exchange-rates)
+[DEBUG] 2021-11-09 19:10:06.963 [main] ExchangeRatesApplication - Running with Spring Boot v2.5.6, Spring v5.3.12
+[INFO ] 2021-11-09 19:10:06.964 [main] ExchangeRatesApplication - No active profile set, falling back to default profiles: default
+[INFO ] 2021-11-09 19:10:32.820 [main] ExchangeRatesApplication - Started ExchangeRatesApplication in 27.073 seconds (JVM running for 29.311)
+[DEBUG] 2021-11-09 20:26:24.376 [http-nio-7770-exec-1] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2020-11-11?access_key=088836a96b5eb919db3692b134042f24&symbols=XAU,XAG,GBP
+[DEBUG] 2021-11-09 20:26:24.402 [http-nio-7770-exec-1] CurrencyServiceImpl - Response : {"success":true,"timestamp":1605139199,"historical":true,"base":"EUR","date":"2020-11-11","rates":{"XAU":6.32E-4,"XAG":0.0486,"GBP":0.890799}}
+[DEBUG] 2021-11-09 20:27:07.734 [http-nio-7770-exec-2] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-09-08?access_key=088836a96b5eb919db3692b134042f24&base=EUR&symbols=JPY
+[DEBUG] 2021-11-09 20:27:17.456 [http-nio-7770-exec-3] Utility - DateTimeException
+[DEBUG] 2021-11-09 20:27:51.712 [http-nio-7770-exec-6] Utility - DateTimeException
+[DEBUG] 2021-11-09 20:28:45.943 [http-nio-7770-exec-7] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-11-01?access_key=088836a96b5eb919db3692b134042f24&symbols=JPY
+[DEBUG] 2021-11-09 20:28:46.376 [http-nio-7770-exec-7] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-10-01?access_key=088836a96b5eb919db3692b134042f24&symbols=JPY
+[DEBUG] 2021-11-09 20:28:46.810 [http-nio-7770-exec-7] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-09-01?access_key=088836a96b5eb919db3692b134042f24&symbols=JPY
+[DEBUG] 2021-11-09 20:28:47.260 [http-nio-7770-exec-7] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-08-01?access_key=088836a96b5eb919db3692b134042f24&symbols=JPY
+[DEBUG] 2021-11-09 20:28:47.706 [http-nio-7770-exec-7] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-07-01?access_key=088836a96b5eb919db3692b134042f24&symbols=JPY
+[DEBUG] 2021-11-09 20:28:48.164 [http-nio-7770-exec-7] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-06-01?access_key=088836a96b5eb919db3692b134042f24&symbols=JPY
+[DEBUG] 2021-11-09 20:28:48.402 [http-nio-7770-exec-7] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-05-01?access_key=088836a96b5eb919db3692b134042f24&symbols=JPY
+[DEBUG] 2021-11-09 20:28:48.845 [http-nio-7770-exec-7] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-04-01?access_key=088836a96b5eb919db3692b134042f24&symbols=JPY
+[DEBUG] 2021-11-09 20:28:49.304 [http-nio-7770-exec-7] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-03-01?access_key=088836a96b5eb919db3692b134042f24&symbols=JPY
+[DEBUG] 2021-11-09 20:28:49.552 [http-nio-7770-exec-7] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-02-01?access_key=088836a96b5eb919db3692b134042f24&symbols=JPY
+[DEBUG] 2021-11-09 20:28:50.003 [http-nio-7770-exec-7] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2021-01-01?access_key=088836a96b5eb919db3692b134042f24&symbols=JPY
+[DEBUG] 2021-11-09 20:28:50.438 [http-nio-7770-exec-7] CurrencyServiceImpl - http://api.exchangeratesapi.io/v1/2020-12-01?access_key=088836a96b5eb919db3692b134042f24&symbols=JPY

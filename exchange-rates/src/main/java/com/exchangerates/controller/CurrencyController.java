@@ -38,7 +38,7 @@ public class CurrencyController {
 	 * @param currencyList
 	 * @return
 	 */
-	@RequestMapping(value="/Rates_By_Date_And_Currencies", method=RequestMethod.GET,  produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/rates_by_date_and_currencies", method=RequestMethod.GET,  produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<BaseResponse> loadExchangeRates(@RequestParam (value ="date")String date,
 					@RequestParam (value ="currencyList") List<String> currencyList){
 		
@@ -63,7 +63,7 @@ public class CurrencyController {
 	 * @param base
 	 * @return
 	 */
-	@RequestMapping(value="/Rate", method=RequestMethod.GET)
+	@RequestMapping(value="/rate", method=RequestMethod.GET)
 	public ResponseEntity<BaseResponse> loadExchangeRates(@RequestParam String date, @RequestParam String currency, 
 			@RequestParam String base){
 		
@@ -87,7 +87,7 @@ public class CurrencyController {
 	 * @param currency
 	 * @return
 	 */
-	@RequestMapping(value="/Rates_For_Year/{currency}", method=RequestMethod.GET)
+	@RequestMapping(value="/rates_for_year/{currency}", method=RequestMethod.GET)
 	public ResponseEntity<BaseResponse> loadExchangeRates(@PathVariable("currency") String currency){
 	
 		currencyService.loadData(currency);
@@ -106,7 +106,7 @@ public class CurrencyController {
 	 * @param currency
 	 * @return
 	 */
-	@RequestMapping(value="/Rate_By_Date_And_Currency", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/rate_by_date_and_currency", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<BaseResponse> getRate(@RequestParam(value ="date")String date, 
 			@RequestParam(value="currency") String currency){
 		
@@ -139,7 +139,7 @@ public class CurrencyController {
 	 * @param date
 	 * @return
 	 */
-	@RequestMapping(value="/Rate_By_Date",method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/rate_by_date",method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<BaseResponse> getRatesForDateRange(@RequestParam("date") String date){
 		
 		 Optional<LocalDate> validate = Optional.ofNullable(Utility.validateDateFormat(date));
